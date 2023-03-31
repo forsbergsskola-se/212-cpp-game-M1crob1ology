@@ -31,3 +31,21 @@ bool Window::init(int width, int height)
 
     return success;
 }
+
+Window::~Window()
+{
+    //Destroy window
+    SDL_DestroyWindow(gWindow);
+    gWindow = NULL;
+
+    //Quit SDL subsystems
+    SDL_Quit();
+}
+
+void Window::render(Image& image)
+{
+    //Apply the image
+    SDL_BlitSurface(image.getResource(), NULL, gScreenSurface, NULL);
+    //Update the surface
+    SDL_UpdateWindowSurface(gWindow);
+}
