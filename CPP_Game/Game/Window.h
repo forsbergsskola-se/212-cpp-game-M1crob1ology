@@ -9,17 +9,13 @@ class Window
 	SDL_Window* gWindow{};
 	//The surface contained by the window
 	SDL_Surface* gScreenSurface{};
-	bool init(int width, int height);
 	//Whether Window startup was successful
 	bool success;
 
 	
 
 public:
-	Window(int width, int height)
-	{
-		success = init(width, height);
-	}
+	Window(int width, int height);
 	~Window();
 	bool wasSuccessful() { return success; }
 	void render(Image& image);
