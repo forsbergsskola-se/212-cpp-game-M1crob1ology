@@ -6,9 +6,9 @@
 class Window
 {
 	//The window we'll be rendering to
-	SDL_Window* gWindow{};
+	SDL_Window* window{};
 	//The surface contained by the window
-	SDL_Surface* gScreenSurface{};
+	SDL_Surface* screenSurface{};
 	//Whether Window startup was successful
 	bool success;
 
@@ -18,7 +18,7 @@ public:
 	Window(int width, int height);
 	~Window();
 	bool wasSuccessful() { return success; }
-	void render(Image& image);
+	void render(Image* image) const;
 
 };
 
