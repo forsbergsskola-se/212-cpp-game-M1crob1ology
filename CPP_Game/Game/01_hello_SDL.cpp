@@ -1,13 +1,14 @@
 #include <cstdio>
 #include <map>
 #include <SDL.h>
+#include <SDL_image.h>
 #include <memory>
 #include "Image.h"
-#include "Window.h"
+#include "RenderWindow.h"
 
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 720;
 
 enum class KeyPressSurfaces
 {
@@ -32,7 +33,9 @@ const char* fallbackSurface{"img/press.bmp" };
 
 int main(int argc, char* args[])
 {
-	Window window(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+	RenderWindow window("Da game", SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//Start up SDL and create window
 	if (!window.wasSuccessful())

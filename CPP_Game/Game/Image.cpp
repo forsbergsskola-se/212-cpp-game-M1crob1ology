@@ -1,6 +1,10 @@
 #include "Image.h"
 #include <SDL.h>
 #include <cstdio>
+#include <iostream>
+#include <SDL_image.h>
+
+using namespace std;
 
 Image::Image(const char* path) : success{}
 {
@@ -8,7 +12,7 @@ Image::Image(const char* path) : success{}
 	imageSurface = SDL_LoadBMP(path);
 	if (!imageSurface)
 	{
-		printf("Unable to load image %s! SDL Error: %s\n", path, SDL_GetError());
+		cout << "Unable to load image " << path << "! SDL Error:" << SDL_GetError() << endl;
 		return;
 	}
 
