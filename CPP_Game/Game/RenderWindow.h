@@ -2,6 +2,7 @@
 #include <SDL.h> // This is not how Marc did it in the loom but I had to add it for it to work for some reason...
 #include  <SDL_image.h>
 #include "Image.h"
+#include "GameObject.h"
 
 class RenderWindow
 {
@@ -19,8 +20,11 @@ class RenderWindow
 public:
 	RenderWindow(const char* title, int width, int height);
 	~RenderWindow();
+	SDL_Texture* loadTexture(const char* filePath);
 	bool wasSuccessful() { return success; }
-	void render(Image* image) const;
+	void clear();
+	void render(GameObject& p_gameObject);
+	void display();
 
 };
 

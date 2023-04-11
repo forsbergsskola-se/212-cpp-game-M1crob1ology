@@ -5,6 +5,7 @@
 #include <memory>
 #include "Image.h"
 #include "RenderWindow.h"
+#include "GameObject.h"
 
 
 const int SCREEN_WIDTH = 1280;
@@ -33,9 +34,11 @@ const char* fallbackSurface{"img/press.bmp" };
 
 int main(int argc, char* args[])
 {
-
-
 	RenderWindow window("Da game", SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	SDL_Texture* groundTexture = window.loadTexture("img/pngs/ground_2.png");
+
+	GameObject groundObject(100, 50, groundTexture);
 
 	//Start up SDL and create window
 	if (!window.wasSuccessful())
@@ -44,47 +47,61 @@ int main(int argc, char* args[])
 		return -1;
 	}
 
-	//Load media
-	auto image = std::make_unique<Image>( fallbackSurface );
-	if (!image->wasSuccessful())
+	bool gameRunning{true};
+	SDL_Event event;
+	while (gameRunning)
 	{
-		printf("Failed to load media!\n");
-		return -1;
-	}
-
-
-
-	//Hack to get window to stay up
-	SDL_Event e;
-	bool quit = false;
-	while (quit == false)
-	{
-		while (SDL_PollEvent(&e))
+		while (SDL_PollEvent(&event))
 		{
-			switch (e.type)
-			{
-				case SDL_QUIT:
-				{
-					quit = true;
-				} break;
-				case SDL_KEYDOWN:
-				{
-					if(auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end())
-					{
-						auto value = *result;
-						auto imageName = value.second;
-						image = std::make_unique<Image>( imageName );
-					}
-					else
-					{
-						image = std::make_unique<Image>(fallbackSurface);
-					}
-				}break;
-			}
-			if (e.type == SDL_QUIT) quit = true;
+			if (event.type == SDL_QUIT)
+				gameRunning = false;
 		}
-		window.render(image.get());
+
+		window.clear();
+		window.render(groundObject);
+		window.display();
 	}
 
-	return 0;
+	// Old stuff
+	////Load media
+	//auto image = std::make_unique<Image>( fallbackSurface );
+	//if (!image->wasSuccessful())
+	//{
+	//	printf("Failed to load media!\n");
+	//	return -1;
+	//}
+
+	////Hack to get window to stay up
+	//SDL_Event e;
+	//bool quit = false;
+	//while (quit == false)
+	//{
+	//	while (SDL_PollEvent(&e))
+	//	{
+	//		switch (e.type)
+	//		{
+	//			case SDL_QUIT:
+	//			{
+	//				quit = true;
+	//			} break;
+	//			case SDL_KEYDOWN:
+	//			{
+	//				if(auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end())
+	//				{
+	//					auto value = *result;
+	//					auto imageName = value.second;
+	//					image = std::make_unique<Image>( imageName );
+	//				}
+	//				else
+	//				{
+	//					image = std::make_unique<Image>(fallbackSurface);
+	//				}
+	//			}break;
+	//		}
+	//		if (e.type == SDL_QUIT) quit = true;
+	//	}
+	//	window.render(image.get());
+	//}
+
+	//return 0;
 }
