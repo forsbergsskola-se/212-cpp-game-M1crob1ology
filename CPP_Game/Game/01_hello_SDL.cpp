@@ -37,8 +37,10 @@ int main(int argc, char* args[])
 	RenderWindow window("Da game", SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	SDL_Texture* groundTexture = window.loadTexture("img/pngs/ground_2.png");
+	SDL_Texture* zdTexture = window.loadTexture("img/pngs/zombie_dinosaur_idle.png");
 
 	GameObject groundObject(100, 50, groundTexture);
+	GameObject zd(100, 100, zdTexture);
 
 	//Start up SDL and create window
 	if (!window.wasSuccessful())
@@ -58,7 +60,7 @@ int main(int argc, char* args[])
 		}
 
 		window.clear();
-		window.render(groundObject);
+		window.render(zd);
 		window.display();
 	}
 
