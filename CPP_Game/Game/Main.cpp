@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <memory>
+#include <vector>
 #include "Image.h"
 #include "RenderWindow.h"
 #include "GameObject.h"
@@ -39,8 +40,13 @@ int main(int argc, char* args[])
 	SDL_Texture* groundTexture = window.loadTexture("img/pngs/ground_2.png");
 	SDL_Texture* zdTexture = window.loadTexture("img/pngs/zombie_dinosaur_idle.png");
 
-	GameObject groundObject(100, 50, groundTexture);
-	GameObject zd(100, 100, zdTexture);
+
+	std::vector<GameObject> gameObjects =
+	{
+		GameObject(0,0,groundTexture),
+		GameObject(30,0,groundTexture),
+		GameObject(30,30,groundTexture),
+	};
 
 	//Start up SDL and create window
 	if (!window.wasSuccessful())
@@ -60,7 +66,11 @@ int main(int argc, char* args[])
 		}
 
 		window.clear();
-		window.render(zd);
+
+		for (size_t i = 0; i < gameObjects.size(); ++i)
+		{
+			window.render(gameObjects[i]);
+		}
 		window.display();
 	}
 
