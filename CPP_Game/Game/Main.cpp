@@ -7,6 +7,8 @@
 #include "Image.h"
 #include "RenderWindow.h"
 #include "GameObject.h"
+#include "Math.h"
+#include "Utils.h"
 
 
 const int SCREEN_WIDTH = 1280;
@@ -31,7 +33,7 @@ const std::map<SDL_KeyCode, const char*> surfaceMap
 	{SDL_KeyCode::SDLK_RIGHT, "img/right.bmp"}
 
 };
-const char* fallbackSurface{"img/press.bmp" };
+const char* fallbackSurface{ "img/press.bmp" };
 
 int main(int argc, char* args[])
 {
@@ -43,9 +45,9 @@ int main(int argc, char* args[])
 
 	std::vector<GameObject> gameObjects =
 	{
-		GameObject(0,0,groundTexture),
-		GameObject(30,0,groundTexture),
-		GameObject(30,30,groundTexture),
+		GameObject(Vector2f(0,0),zdTexture),
+		GameObject(Vector2f(0,30),groundTexture),
+		GameObject(Vector2f(30,30),groundTexture),
 	};
 
 	//Start up SDL and create window
@@ -55,23 +57,46 @@ int main(int argc, char* args[])
 		return -1;
 	}
 
-	bool gameRunning{true};
+	bool gameRunning{ true };
 	SDL_Event event;
+	const float timeStep{ 0.01f };
+	float accumulator{ 0.0f };
+	float currentTime{ utils::hireTimeInSeconds() };
+
+	// Game Loop
 	while (gameRunning)
 	{
-		while (SDL_PollEvent(&event))
+		int startTicks = SDL_GetTicks();
+
+		float newTime = utils::hireTimeInSeconds();
+		float frameTime = newTime - currentTime;
+
+		currentTime = newTime;
+		accumulator += frameTime;
+
+		while(accumulator >= timeStep)
 		{
-			if (event.type == SDL_QUIT)
-				gameRunning = false;
+			while (SDL_PollEvent(&event))
+			{
+				if (event.type == SDL_QUIT)
+					gameRunning = false;
+			}
+
+			accumulator -= timeStep;
 		}
+
+		const float alpha = accumulator / timeStep;
 
 		window.clear();
 
-		for (size_t i = 0; i < gameObjects.size(); ++i)
+		for (auto& gameObject : gameObjects)
 		{
-			window.render(gameObjects[i]);
+			gameObject.render(&window);
 		}
+
 		window.display();
+
+
 	}
 
 	// Old stuff

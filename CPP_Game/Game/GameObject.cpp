@@ -2,7 +2,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-GameObject::GameObject(float p_x, float p_y, SDL_Texture* p_tex) : x(p_x), y(p_y), tex(p_tex)
+#include "RenderWindow.h"
+
+GameObject::GameObject(Vector2f p_pos, SDL_Texture* p_tex) : pos(p_pos), tex(p_tex)
 {
 	currentFrame.x = 0;
 	currentFrame.y = 0;
@@ -10,15 +12,6 @@ GameObject::GameObject(float p_x, float p_y, SDL_Texture* p_tex) : x(p_x), y(p_y
 	currentFrame.h = 32;
 }
 
-float GameObject::getX()
-{
-	return x;
-}
-
-float GameObject::getY()
-{
-	return y;
-}
 
 SDL_Texture* GameObject::getTex()
 {
@@ -30,4 +23,8 @@ SDL_Rect GameObject::getCurrentFrame()
 	return currentFrame;
 }
 
+void GameObject::render(RenderWindow* window)
+{
+	window->render(*this);
+}
 

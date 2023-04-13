@@ -28,7 +28,7 @@ RenderWindow::RenderWindow(const char* title, int width, int height) : success{}
 		return;
 	}
 
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	//Get window surface
 	screenSurface = SDL_GetWindowSurface(window);
 	success = true;
@@ -69,8 +69,8 @@ void RenderWindow::render(GameObject& p_gameObject)
 	src.h = p_gameObject.getCurrentFrame().h;
 
 	SDL_Rect dst;
-	dst.x = p_gameObject.getX() * 4;
-	dst.y = p_gameObject.getY() * 4;
+	dst.x = p_gameObject.getPos().x * 4;
+	dst.y = p_gameObject.getPos().y * 4;
 	dst.w = p_gameObject.getCurrentFrame().w * 4;
 	dst.h = p_gameObject.getCurrentFrame().h * 4;
 
