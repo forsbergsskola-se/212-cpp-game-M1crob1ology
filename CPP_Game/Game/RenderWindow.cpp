@@ -34,14 +34,14 @@ RenderWindow::RenderWindow(const char* title, int width, int height) : success{}
 	success = true;
 }
 
-SDL_Texture* RenderWindow::loadTexture(const char* filePath)
+unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> RenderWindow::loadTexture(const char* filePath)
 {
 	SDL_Texture* texture{};
 	texture = IMG_LoadTexture(renderer, filePath);
 
 	if (!texture)
 		cout << "Failed to load texture. Error: " << SDL_GetError() << endl;
-	return texture;
+	return std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)>(texture, SDL_DestroyTexture);
 }
 
 RenderWindow::~RenderWindow()
@@ -69,12 +69,12 @@ void RenderWindow::render(GameObject& p_gameObject)
 	src.h = p_gameObject.getCurrentFrame().h;
 
 	SDL_Rect dst;
-	dst.x = p_gameObject.getPos().x * 4;
-	dst.y = p_gameObject.getPos().y * 4;
-	dst.w = p_gameObject.getCurrentFrame().w * 4;
-	dst.h = p_gameObject.getCurrentFrame().h * 4;
+	dst.x = p_gameObject.pos.x;
+	dst.y = p_gameObject.pos.y;
+	dst.w = p_gameObject.getCurrentFrame().w * p_gameObject.getScale().x;
+	dst.h = p_gameObject.getCurrentFrame().h * p_gameObject.getScale().y;
 
-	SDL_RenderCopy(renderer, p_gameObject.getTex(), &src, &dst);
+	SDL_RenderCopy(renderer, &p_gameObject.getTex().getTexture(), &src, &dst);
 }
 
 void RenderWindow::display()
@@ -82,4 +82,10 @@ void RenderWindow::display()
 	SDL_RenderPresent(renderer);
 }
 
-
+// For making animation for the player later
+// const int numberOfSprites = 5;
+// int currentSprite = 3;
+// src.w = p_gameObject.getCurrentFrame().w/numberOfSprites;
+// src.h = p_gameObject.getCurrentFrame().h;
+// src.x = p_gameObject.getCurrentFrame().x+currentSprite*src.w;
+// src.y = p_gameObject.getCurrentFrame().y;

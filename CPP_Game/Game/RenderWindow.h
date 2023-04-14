@@ -20,7 +20,7 @@ class RenderWindow
 public:
 	RenderWindow(const char* title, int width, int height);
 	~RenderWindow();
-	SDL_Texture* loadTexture(const char* filePath);
+	std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> loadTexture(const char* filePath);
 	bool wasSuccessful() { return success; }
 	void clear();
 	void render(GameObject& p_gameObject);
