@@ -4,7 +4,10 @@
 
 #include "RenderWindow.h"
 
-GameObject::GameObject(Vector2f p_pos, SDL_Texture* p_tex) : pos(p_pos), tex(p_tex)
+GameObject::GameObject(Vector2f p_pos, Vector2f p_scale, std::shared_ptr<Image> p_tex) :
+pos(p_pos),
+scale(p_scale),
+tex(p_tex)
 {
 	currentFrame.x = 0;
 	currentFrame.y = 0;
@@ -13,9 +16,9 @@ GameObject::GameObject(Vector2f p_pos, SDL_Texture* p_tex) : pos(p_pos), tex(p_t
 }
 
 
-SDL_Texture* GameObject::getTex()
+Image& GameObject::getTex()
 {
-	return tex;
+	return *tex;
 }
 
 SDL_Rect GameObject::getCurrentFrame()
@@ -26,5 +29,10 @@ SDL_Rect GameObject::getCurrentFrame()
 void GameObject::render(RenderWindow* window)
 {
 	window->render(*this);
+}
+
+void GameObject::update()
+{
+	
 }
 

@@ -7,6 +7,8 @@
 #include "Image.h"
 #include "RenderWindow.h"
 #include "GameObject.h"
+#include "GroundObj.h"
+#include "Player.h"
 #include "Math.h"
 #include "Utils.h"
 
@@ -39,15 +41,21 @@ int main(int argc, char* args[])
 {
 	RenderWindow window("Da game", SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	SDL_Texture* groundTexture = window.loadTexture("img/pngs/ground_2.png");
-	SDL_Texture* zdTexture = window.loadTexture("img/pngs/zombie_dinosaur_idle.png");
+	auto zdTexture = std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", window);
 
-
-	std::vector<GameObject> gameObjects =
+	GroundObj* groundPrefab = new GroundObj{Vector2f(0,500), Vector2f(SCREEN_WIDTH/2/32,5), std::make_shared<Image>("img/pngs/ground_2.png", window)};
+	Player* playerPrefab = new Player{Vector2f(200,400), Vector2f(3, 3), std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", window)};
+	GroundObj* groundClone = new GroundObj{*groundPrefab};
+	GroundObj* groundClone2 = new GroundObj{*groundPrefab};
+	GroundObj* groundClone3 = new GroundObj{*groundPrefab};
+	groundClone->pos.x +=640;
+	groundClone2->pos.x +=1280; 
+	std::vector<GameObject*> gameObjects =
 	{
-		GameObject(Vector2f(0,0),zdTexture),
-		GameObject(Vector2f(0,30),groundTexture),
-		GameObject(Vector2f(30,30),groundTexture),
+		playerPrefab,
+		groundPrefab,
+		groundClone,
+		groundClone2
 	};
 
 	//Start up SDL and create window
@@ -59,10 +67,14 @@ int main(int argc, char* args[])
 
 	bool gameRunning{ true };
 	SDL_Event event;
+	bool quit = false;
 	const float timeStep{ 0.01f };
 	float accumulator{ 0.0f };
 	float currentTime{ utils::hireTimeInSeconds() };
 
+	bool moveLeft = false;
+	bool moveRight = false;
+	
 	// Game Loop
 	while (gameRunning)
 	{
@@ -78,10 +90,63 @@ int main(int argc, char* args[])
 		{
 			while (SDL_PollEvent(&event))
 			{
-				if (event.type == SDL_QUIT)
-					gameRunning = false;
+				switch (event.type)
+			{
+				case SDL_QUIT:
+				{
+					quit = true;
+				} break;
+				case SDL_KEYDOWN:
+					{
+						if (event.key.keysym.sym == SDLK_LEFT)
+						{
+							moveLeft = true;
+						}
+						else if (event.key.keysym.sym == SDLK_RIGHT)
+						{
+							moveRight = true;
+						}
+					} break;
+				case SDL_KEYUP:
+					{
+						if (event.key.keysym.sym == SDLK_LEFT)
+						{
+							moveLeft = false;
+						}
+						else if (event.key.keysym.sym == SDLK_RIGHT)
+						{
+							moveRight = false;
+						}
+					} break;
+			}
+			if (event.type == SDL_QUIT) quit = true;
 			}
 
+			// Do shit here
+			for (GameObject* groundObj : gameObjects)
+			{
+				// cast the GameObject pointer to a GroundObj pointer if possible
+				if (auto* ground_obj = dynamic_cast<GroundObj*>(groundObj))
+				{// if ground.x < -screenwidth / 2 => ground.x += screenwidth * 1.5
+					if (groundObj->pos.x <= -SCREEN_WIDTH / 2)
+					{
+						groundObj->pos.x += SCREEN_WIDTH * 1.5;
+					}
+
+					if (moveLeft)
+					{
+						groundObj->pos.x -= 7;
+					}
+					else if (moveRight)
+					{
+						groundObj->pos.x += 7;
+					}
+					//groundObj->pos.x -= 3;
+					// handle the GroundObj object here
+					// ...
+				}
+			}
+			
 			accumulator -= timeStep;
 		}
 
@@ -89,9 +154,9 @@ int main(int argc, char* args[])
 
 		window.clear();
 
-		for (auto& gameObject : gameObjects)
+		for (auto* gameObject : gameObjects)
 		{
-			gameObject.render(&window);
+			gameObject->render(&window);
 		}
 
 		window.display();

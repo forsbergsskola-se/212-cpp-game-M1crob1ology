@@ -1,23 +1,30 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
+
+#include "Image.h"
 #include "Math.h"
 
 extern class RenderWindow;
 
 class GameObject
 {
-	Vector2f pos;
+	
 	SDL_Rect currentFrame;
-	SDL_Texture* tex;
+	std::shared_ptr<Image> tex;
+protected:
 public:
-	GameObject(Vector2f p_pos, SDL_Texture* p_tex);
-	Vector2f& getPos()
+	Vector2f pos;
+	Vector2f scale;
+	GameObject(Vector2f p_pos, Vector2f p_scale, std::shared_ptr<Image> image);
+	Vector2f velocity;
+	Vector2f& getScale()
 	{
-		return pos;
+		return scale;
 	}
-	SDL_Texture* getTex();
+	Image& getTex();
+	// add velocity to position
+	virtual void update();
 	SDL_Rect getCurrentFrame();
-	//virtual void update() = 0;
 	void render(RenderWindow* window);
 };
