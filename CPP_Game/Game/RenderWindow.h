@@ -4,6 +4,10 @@
 #include "Image.h"
 #include "GameObject.h"
 
+
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 720;
+
 class RenderWindow
 {
 	//The window we'll be rendering to

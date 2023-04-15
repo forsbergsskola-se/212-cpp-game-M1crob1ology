@@ -13,8 +13,7 @@
 #include "Utils.h"
 
 
-const int SCREEN_WIDTH = 1280;
-const int SCREEN_HEIGHT = 720;
+
 
 enum class KeyPressSurfaces
 {
@@ -128,10 +127,10 @@ int main(int argc, char* args[])
 				// cast the GameObject pointer to a GroundObj pointer if possible
 				if (auto* ground_obj = dynamic_cast<GroundObj*>(groundObj))
 				{// if ground.x < -screenwidth / 2 => ground.x += screenwidth * 1.5
-					if (groundObj->pos.x <= -SCREEN_WIDTH / 2)
-					{
-						groundObj->pos.x += SCREEN_WIDTH * 1.5;
-					}
+					// if (groundObj->pos.x <= -SCREEN_WIDTH / 2)
+					// {
+					// 	groundObj->pos.x += SCREEN_WIDTH * 1.5;
+					// }
 
 					if (moveLeft)
 					{

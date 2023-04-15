@@ -6,3 +6,13 @@ GroundObj::GroundObj(Vector2f p_pos, Vector2f p_scale, std::shared_ptr<Image> p_
     // any additional initialization for the ground object
     // can be done here
 }
+
+void GroundObj::update()
+{
+    // Moves ground to the left and teleports them to the right when off screen
+    if (pos.x <= -SCREEN_WIDTH / 2)
+    {
+        pos.x += SCREEN_WIDTH * 1.5;
+    }
+    pos.x -= 3;
+}
