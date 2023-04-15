@@ -47,22 +47,16 @@ int main(int argc, char* args[])
         return -1;
     }
 
-    bool gameRunning{true};
     SDL_Event event;
     bool quit = false;
     const float timeStep{0.01f};
     float accumulator{0.0f};
     float currentTime{utils::hireTimeInSeconds()};
 
-    bool moveLeft = false;
-    bool moveRight = false;
-
     // Game Loop
-    while (gameRunning)
+    while (!quit)
     {
         std::unique_ptr<GameState> currentState = std::make_unique<MenuState>(window);
-
-        int startTicks = SDL_GetTicks();
 
         float newTime = utils::hireTimeInSeconds();
         float frameTime = newTime - currentTime;
@@ -81,49 +75,25 @@ int main(int argc, char* args[])
                         quit = true;
                     }
                     break;
-                case SDL_KEYDOWN:
-                    {
-                        if (event.key.keysym.sym == SDLK_LEFT)
-                        {
-                            moveLeft = true;
-                        }
-                        else if (event.key.keysym.sym == SDLK_RIGHT)
-                        {
-                            moveRight = true;
-                        }
-                    }
-                    break;
-                case SDL_KEYUP:
-                    {
-                        if (event.key.keysym.sym == SDLK_LEFT)
-                        {
-                            moveLeft = false;
-                        }
-                        else if (event.key.keysym.sym == SDLK_RIGHT)
-                        {
-                            moveRight = false;
-                        }
-                    }
-                    break;
                 }
-                if (event.type == SDL_QUIT) quit = true;
                 currentState->handleInput(event);
             }
 
-            // Do shit here
-            auto newState = currentState->update();
-            if (newState != nullptr)
-            {
-                currentState = std::move(newState);
-            }
 
             accumulator -= timeStep;
+        }
+        // Do shit here
+        auto newState = currentState->update();
+        if (newState != nullptr)
+        {
+            currentState = std::move(newState);
         }
 
         const float alpha = accumulator / timeStep;
 
         // Rendering happens in the states
         window.clear();
+        currentState->render(window);
         window.display();
     }
 

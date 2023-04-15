@@ -9,7 +9,7 @@ extern class RenderWindow;
 
 class GameObject
 {
-	
+		
 	SDL_Rect currentFrame;
 	std::shared_ptr<Image> tex;
 protected:
@@ -25,6 +25,7 @@ public:
 	Image& getTex();
 	// add velocity to position
 	virtual void update();
+	virtual void handleInput(SDL_Event& event){}
 	SDL_Rect getCurrentFrame();
 	void render(RenderWindow* window);
 };

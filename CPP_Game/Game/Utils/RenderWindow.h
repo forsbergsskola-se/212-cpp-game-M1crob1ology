@@ -24,6 +24,7 @@ class RenderWindow
 
 public:
 	RenderWindow(const char* title, int width, int height);
+	RenderWindow(const RenderWindow& other) = delete;
 	~RenderWindow();
 	std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> loadTexture(const char* filePath);
 	bool wasSuccessful() { return success; }

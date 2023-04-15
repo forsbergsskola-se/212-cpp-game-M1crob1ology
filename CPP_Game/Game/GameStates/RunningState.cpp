@@ -2,37 +2,45 @@
 
 #include "DeadState.h"
 #include "../GameObjects/GroundObj.h"
+#include "../GameObjects/Player.h"
 
 class GroundObj;
 
 // Start
 RunningState::RunningState(std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> p_world, RenderWindow p_window) :
-world{std::move(p_world)},
+GameState{std::move(p_world)},
 window{p_window}
 {
     
 }
 
+// temporary bool
+bool dead{false};
+
 void RunningState::handleInput(SDL_Event input)
 {
-    if(/* space */)
+    for (auto& gameObject : *world)
     {
-        // jump
+        gameObject->handleInput(input);
+    }
+    if(input.key.keysym.sym == SDLK_BACKSPACE)
+    {
+        dead = true;
     }
 }
 
 // Update
 std::unique_ptr<GameState> RunningState::update()
 {
-    if(/* dead */)
+    if(dead = true)
     {
         return std::make_unique<DeadState>(std::move(world), window);
     }
 
     // Move world and stuff
-    for (GameObject object : world)
+    for (auto& object : *world)
     {
-        object.update();
+        object->update();
     }
 
     return nullptr;

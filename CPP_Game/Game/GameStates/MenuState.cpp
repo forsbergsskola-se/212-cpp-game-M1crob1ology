@@ -5,8 +5,9 @@
 #include "../GameObjects/Player.h"
 
 // Start
-MenuState::MenuState(RenderWindow p_window):
-window{p_window}
+MenuState::MenuState(RenderWindow& p_window):
+window{std::move(p_window)},
+GameState{std::make_unique<std::vector<std::unique_ptr<GameObject>>>()}
 {
     GroundObj groundPrefab = GroundObj{Vector2f(0,500), Vector2f(SCREEN_WIDTH/2/32,5), std::make_shared<Image>("img/pngs/ground_2.png", window)};
     auto groundClone1 = std::make_unique<GroundObj>(groundPrefab);
@@ -28,7 +29,7 @@ window{p_window}
 // Update
 void MenuState::handleInput(SDL_Event input)
 {
-    if(/* space */)
+    if(input.key.keysym.sym == SDLK_SPACE)
     {
         startGame = true;
         

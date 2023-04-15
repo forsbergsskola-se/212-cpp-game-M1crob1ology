@@ -1,18 +1,17 @@
 #include "DeadState.h"
-
 #include "MenuState.h"
 
 // Start
-DeadState::DeadState(std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> p_world, RenderWindow p_window) :
-world{std::move(p_world)},
-window{p_window}
+DeadState::DeadState(std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> p_world, RenderWindow& p_window) :
+GameState{std::move(p_world)},
+window{std::move(p_window)}
 {
     
 }
 
-void MenuState::handleInput(SDL_Event input)
+void DeadState::handleInput(SDL_Event input)
 {
-    if(/* space */)
+    if(input.key.keysym.sym == SDLK_SPACE)
     {
         restartGame = true;
         
@@ -22,8 +21,9 @@ void MenuState::handleInput(SDL_Event input)
 // Update
 std::unique_ptr<GameState> DeadState::update()
 {
-    if(/* space */)
+    if(restartGame)
     {
         return std::make_unique<MenuState>(window);
     }
+    return nullptr;
 }
