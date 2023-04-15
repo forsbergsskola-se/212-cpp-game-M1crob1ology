@@ -10,9 +10,11 @@ extern class GameObject;
 
 class MenuState : public GameState
 {
+    bool startGame{};
 public:
     MenuState(RenderWindow p_window);
-    GameState* update(SDL_Event input) override;
-    std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> world;
+    std::unique_ptr<GameState> update() override;
+    void handleInput(SDL_Event input) override;
+    // std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> world;
     RenderWindow window;
 };

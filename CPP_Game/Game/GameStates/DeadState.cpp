@@ -10,11 +10,20 @@ window{p_window}
     
 }
 
-// Update
-GameState* DeadState::update(SDL_Event input)
+void MenuState::handleInput(SDL_Event input)
 {
     if(/* space */)
     {
-        return new MenuState(window);
+        restartGame = true;
+        
+    }
+}
+
+// Update
+std::unique_ptr<GameState> DeadState::update()
+{
+    if(/* space */)
+    {
+        return std::make_unique<MenuState>(window);
     }
 }

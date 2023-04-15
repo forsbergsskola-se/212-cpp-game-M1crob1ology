@@ -26,11 +26,19 @@ window{p_window}
 }
 
 // Update
-GameState* MenuState::update(SDL_Event input)
+void MenuState::handleInput(SDL_Event input)
 {
     if(/* space */)
     {
-        return new RunningState(std::move(world), window);
+        startGame = true;
+        
     }
 }
 
+std::unique_ptr<GameState> MenuState::update()
+{
+    if(startGame)
+        return std::make_unique<RunningState>(std::move(world), window);
+    else
+        return nullptr;
+}
