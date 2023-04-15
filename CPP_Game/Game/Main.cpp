@@ -4,13 +4,13 @@
 #include <SDL_image.h>
 #include <memory>
 #include <vector>
-#include "Image.h"
-#include "RenderWindow.h"
-#include "GameObject.h"
-#include "GroundObj.h"
-#include "Player.h"
-#include "Math.h"
-#include "Utils.h"
+#include "Utils/Image.h"
+#include "Utils/RenderWindow.h"
+#include "Utils/GameObject.h"
+#include "GameObjects/GroundObj.h"
+#include "GameObjects/Player.h"
+#include "Utils/Math.h"
+#include "Utils/Utils.h"
 
 
 
@@ -42,11 +42,11 @@ int main(int argc, char* args[])
 
 	auto zdTexture = std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", window);
 
-	GroundObj* groundPrefab = new GroundObj{Vector2f(0,500), Vector2f(SCREEN_WIDTH/2/32,5), std::make_shared<Image>("img/pngs/ground_2.png", window)};
+	GroundObj groundPrefab = GroundObj{Vector2f(0,500), Vector2f(SCREEN_WIDTH/2/32,5), std::make_shared<Image>("img/pngs/ground_2.png", window)};
 	Player* playerPrefab = new Player{Vector2f(200,400), Vector2f(3, 3), std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", window)};
-	GroundObj* groundClone = new GroundObj{*groundPrefab};
-	GroundObj* groundClone2 = new GroundObj{*groundPrefab};
-	GroundObj* groundClone3 = new GroundObj{*groundPrefab};
+	GroundObj* groundClone = new GroundObj{groundPrefab};
+	GroundObj* groundClone2 = new GroundObj{groundPrefab};
+	GroundObj* groundClone3 = new GroundObj{groundPrefab};
 	groundClone->pos.x +=640;
 	groundClone2->pos.x +=1280; 
 	std::vector<GameObject*> gameObjects =

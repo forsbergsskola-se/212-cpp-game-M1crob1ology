@@ -1,6 +1,6 @@
 #pragma once
-#include "GameObject.h"
-#include "RenderWindow.h"
+#include "../Utils/GameObject.h"
+#include "../Utils/RenderWindow.h"
 
 class GroundObj : public GameObject
 {

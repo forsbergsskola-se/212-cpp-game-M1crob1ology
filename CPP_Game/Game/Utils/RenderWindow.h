@@ -2,11 +2,12 @@
 #include <SDL.h> // This is not how Marc did it in the loom but I had to add it for it to work for some reason...
 #include  <SDL_image.h>
 #include "Image.h"
-#include "GameObject.h"
 
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 720;
+
+extern class GameObject;
 
 class RenderWindow
 {
