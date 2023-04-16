@@ -13,7 +13,9 @@ window{p_window}, GameState{std::make_unique<std::vector<std::unique_ptr<GameObj
     auto groundClone2 = std::make_unique<GroundObj>(groundPrefab);
     auto groundClone3 = std::make_unique<GroundObj>(groundPrefab);
     auto player = std::make_unique<Player>(Vector2f(200,400), Vector2f(3, 3), std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", p_window));
-
+    // const auto instruction = std::make_unique<GameObject>(Vector2f(SCREEN_WIDTH/2, 200), Vector2f(3,3), std::make_shared<Image>("img/pngs/start.png",p_window));
+    // window.render(*instruction);
+    
     groundClone2->pos.x += SCREEN_WIDTH / 2;
     groundClone3->pos.x += SCREEN_WIDTH; 
     

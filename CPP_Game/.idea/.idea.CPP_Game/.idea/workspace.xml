@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aabcbce0-a83c-4e6d-92e5-58677b253c61" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CPP_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CPP_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameStates/DeadState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/DeadState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameStates/DeadState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/DeadState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameStates/MenuState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/MenuState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameStates/MenuState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/MenuState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameStates/RunningState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/RunningState.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameStates/RunningState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/RunningState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,7 @@
       <workItem from="1681464121590" duration="22147000" />
       <workItem from="1681555402375" duration="25805000" />
       <workItem from="1681593059007" duration="54000" />
-      <workItem from="1681660382236" duration="4812000" />
+      <workItem from="1681660382236" duration="6661000" />
     </task>
     <servers />
   </component>

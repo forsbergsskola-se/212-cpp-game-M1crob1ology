@@ -11,11 +11,11 @@ RunningState::RunningState(std::unique_ptr<std::vector<std::unique_ptr<GameObjec
 GameState{std::move(p_world)},
 window{p_window}
 {
-    
+    dead = false;
 }
 
 // temporary bool
-bool dead{false};
+
 
 void RunningState::handleInput(SDL_Event input)
 {
@@ -25,7 +25,7 @@ void RunningState::handleInput(SDL_Event input)
     }
     if (input.type == SDL_KEYDOWN)
     {
-        if(input.key.keysym.sym == SDLK_BACKSPACE)
+        if(input.key.keysym.sym == SDLK_BACKSPACE && !dead)
         {
             dead = true;
         }
