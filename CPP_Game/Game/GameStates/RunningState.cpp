@@ -7,7 +7,7 @@
 class GroundObj;
 
 // Start
-RunningState::RunningState(std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> p_world, RenderWindow p_window) :
+RunningState::RunningState(std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> p_world, RenderWindow& p_window) :
 GameState{std::move(p_world)},
 window{p_window}
 {
@@ -23,16 +23,20 @@ void RunningState::handleInput(SDL_Event input)
     {
         gameObject->handleInput(input);
     }
-    if(input.key.keysym.sym == SDLK_BACKSPACE)
+    if (input.type == SDL_KEYDOWN)
     {
-        dead = true;
+        if(input.key.keysym.sym == SDLK_BACKSPACE)
+        {
+            dead = true;
+        }
     }
 }
 
 // Update
 std::unique_ptr<GameState> RunningState::update()
 {
-    if(dead = true)
+    std::cout << "running\n";
+    if(true == dead)
     {
         return std::make_unique<DeadState>(std::move(world), window);
     }

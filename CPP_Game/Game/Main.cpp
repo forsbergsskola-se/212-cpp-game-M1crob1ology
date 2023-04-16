@@ -53,10 +53,10 @@ int main(int argc, char* args[])
     float accumulator{0.0f};
     float currentTime{utils::hireTimeInSeconds()};
 
+        std::unique_ptr<GameState> currentState = std::make_unique<MenuState>(window);
     // Game Loop
     while (!quit)
     {
-        std::unique_ptr<GameState> currentState = std::make_unique<MenuState>(window);
 
         float newTime = utils::hireTimeInSeconds();
         float frameTime = newTime - currentTime;
@@ -75,6 +75,7 @@ int main(int argc, char* args[])
                         quit = true;
                     }
                     break;
+                    
                 }
                 currentState->handleInput(event);
             }

@@ -4,7 +4,16 @@
     <projectFile>Game/Game.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aabcbce0-a83c-4e6d-92e5-58677b253c61" name="Changes" comment="" />
+    <list default="true" id="aabcbce0-a83c-4e6d-92e5-58677b253c61" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CPP_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CPP_Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameStates/DeadState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/DeadState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameStates/DeadState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/DeadState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameStates/MenuState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/MenuState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameStates/MenuState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/MenuState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameStates/RunningState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/RunningState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameStates/RunningState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/RunningState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,31 +33,31 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OPZL4fpQb2lXZExsLTkRPMVAQ5" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "0d570cb2-96df-43cc-80da-7f777e6d0afe",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;0d570cb2-96df-43cc-80da-7f777e6d0afe&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\lucab\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\lucab\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\lucab\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\lucab\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\lucab\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\lucab\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Game" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -106,15 +115,45 @@
       <option name="presentableId" value="Default" />
       <updated>1681464120029</updated>
       <workItem from="1681464121590" duration="22147000" />
-      <workItem from="1681555402375" duration="25622000" />
+      <workItem from="1681555402375" duration="25805000" />
+      <workItem from="1681593059007" duration="54000" />
+      <workItem from="1681660382236" duration="4812000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Game/GameStates/DeadState.cpp</url>
+          <line>28</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Game/Main.cpp</url>
+          <line>89</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

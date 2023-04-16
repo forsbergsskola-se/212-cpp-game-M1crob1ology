@@ -6,14 +6,13 @@
 
 // Start
 MenuState::MenuState(RenderWindow& p_window):
-window{std::move(p_window)},
-GameState{std::make_unique<std::vector<std::unique_ptr<GameObject>>>()}
+window{p_window}, GameState{std::make_unique<std::vector<std::unique_ptr<GameObject>>>()}
 {
-    GroundObj groundPrefab = GroundObj{Vector2f(0,500), Vector2f(SCREEN_WIDTH/2/32,5), std::make_shared<Image>("img/pngs/ground_2.png", window)};
+    GroundObj groundPrefab = GroundObj{Vector2f(0,500), Vector2f(SCREEN_WIDTH/2/32,5), std::make_shared<Image>("img/pngs/ground_2.png", p_window)};
     auto groundClone1 = std::make_unique<GroundObj>(groundPrefab);
     auto groundClone2 = std::make_unique<GroundObj>(groundPrefab);
     auto groundClone3 = std::make_unique<GroundObj>(groundPrefab);
-    auto player = std::make_unique<Player>(Vector2f(200,400), Vector2f(3, 3), std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", window));
+    auto player = std::make_unique<Player>(Vector2f(200,400), Vector2f(3, 3), std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", p_window));
 
     groundClone2->pos.x += SCREEN_WIDTH / 2;
     groundClone3->pos.x += SCREEN_WIDTH; 
@@ -29,15 +28,20 @@ GameState{std::make_unique<std::vector<std::unique_ptr<GameObject>>>()}
 // Update
 void MenuState::handleInput(SDL_Event input)
 {
-    if(input.key.keysym.sym == SDLK_SPACE)
+    if (input.type == SDL_KEYDOWN)
     {
-        startGame = true;
-        
+        if(input.key.keysym.sym == SDLK_SPACE && !startGame)
+            {
+                std::cout << "Start Game\n";
+                startGame = true;
+            }
     }
+    
 }
 
 std::unique_ptr<GameState> MenuState::update()
 {
+    std::cout << "menu\n";
     if(startGame)
         return std::make_unique<RunningState>(std::move(world), window);
     else
