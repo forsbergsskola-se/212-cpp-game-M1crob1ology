@@ -13,8 +13,7 @@ window{p_window}, GameState{std::make_unique<std::vector<std::unique_ptr<GameObj
     auto groundClone2 = std::make_unique<GroundObj>(groundPrefab);
     auto groundClone3 = std::make_unique<GroundObj>(groundPrefab);
     auto player = std::make_unique<Player>(Vector2f(200,400), Vector2f(3, 3), std::make_shared<Image>("img/pngs/zombie_dinosaur_idle.png", p_window));
-    // const auto instruction = std::make_unique<GameObject>(Vector2f(SCREEN_WIDTH/2, 200), Vector2f(3,3), std::make_shared<Image>("img/pngs/start.png",p_window));
-    // window.render(*instruction);
+    auto startInstruction = std::make_unique<GameObject>(Vector2f(0, 0), Vector2f(10,10), std::make_unique<Image>("img/pngs/start.png",p_window));
     
     groundClone2->pos.x += SCREEN_WIDTH / 2;
     groundClone3->pos.x += SCREEN_WIDTH; 
@@ -24,6 +23,7 @@ window{p_window}, GameState{std::make_unique<std::vector<std::unique_ptr<GameObj
     world->push_back(std::move(groundClone1));
     world->push_back(std::move(groundClone2));
     world->push_back(std::move(groundClone3));
+    world->push_back(std::move(startInstruction));
     
 }
 
@@ -43,7 +43,7 @@ void MenuState::handleInput(SDL_Event input)
 
 std::unique_ptr<GameState> MenuState::update()
 {
-    std::cout << "menu\n";
+    //std::cout << "menu\n";
     if(startGame)
         return std::make_unique<RunningState>(std::move(world), window);
     else

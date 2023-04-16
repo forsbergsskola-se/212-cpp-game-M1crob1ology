@@ -610,6 +610,7 @@ copy /Y "$(SolutionDir)ext\SDL2_image-2.6.3\lib\x64\SDL2_image.dll" "$(TargetDir
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObjects\GroundObj.h" />
+    <ClInclude Include="GameObjects\InstructionObj.h" />
     <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameStates\DeadState.h" />
     <ClInclude Include="GameStates\MenuState.h" />
