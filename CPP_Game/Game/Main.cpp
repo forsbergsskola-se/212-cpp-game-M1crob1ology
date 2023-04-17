@@ -49,8 +49,8 @@ int main(int argc, char* args[])
 
     SDL_Event event;
     bool quit = false;
-    const float timeStep{0.01f};
-    float accumulator{0.0f};
+    const float fixedTimeStep{0.01f};
+    float timeNotSimulatedYet{0.0f};
     float currentTime{utils::hireTimeInSeconds()};
 
         std::unique_ptr<GameState> currentState = std::make_unique<MenuState>(window);
@@ -59,38 +59,37 @@ int main(int argc, char* args[])
     {
 
         float newTime = utils::hireTimeInSeconds();
-        float frameTime = newTime - currentTime;
-
+        float timeSinceLastCheck = newTime - currentTime;
         currentTime = newTime;
-        accumulator += frameTime;
+        
+        timeNotSimulatedYet += timeSinceLastCheck;
 
-        while (accumulator >= timeStep)
+        while (SDL_PollEvent(&event))
         {
-            while (SDL_PollEvent(&event))
+            switch (event.type)
             {
-                switch (event.type)
+            case SDL_QUIT:
                 {
-                case SDL_QUIT:
-                    {
-                        quit = true;
-                    }
-                    break;
-                    
+                    quit = true;
                 }
-                currentState->handleInput(event);
+                break;
+                    
             }
-
-
-            accumulator -= timeStep;
+            currentState->handleInput(event);
         }
-        // Do shit here
-        auto newState = currentState->update();
-        if (newState != nullptr)
+        
+        while (timeNotSimulatedYet >= fixedTimeStep)
         {
-            currentState = std::move(newState);
+            timeNotSimulatedYet -= fixedTimeStep;
+            // Do shit here
+            auto newState = currentState->fixedUpdate();
+            if (newState != nullptr)
+            {
+                currentState = std::move(newState);
+            }
         }
 
-        const float alpha = accumulator / timeStep;
+        const float alpha = timeNotSimulatedYet / fixedTimeStep;
 
         // Rendering happens in the states
         window.clear();

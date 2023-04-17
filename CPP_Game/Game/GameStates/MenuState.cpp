@@ -42,7 +42,7 @@ void MenuState::handleInput(SDL_Event input)
     
 }
 
-std::unique_ptr<GameState> MenuState::update()
+std::unique_ptr<GameState> MenuState::fixedUpdate()
 {
     //std::cout << "menu\n";
     if(startGame)

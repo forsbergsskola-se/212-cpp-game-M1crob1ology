@@ -25,7 +25,7 @@ void DeadState::handleInput(SDL_Event input)
 }
 
 // Update
-std::unique_ptr<GameState> DeadState::update()
+std::unique_ptr<GameState> DeadState::fixedUpdate()
 {
     std::cout << "dead\n";
     if(restartGame)

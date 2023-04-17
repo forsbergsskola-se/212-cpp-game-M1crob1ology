@@ -10,7 +10,7 @@ class DeadState : public GameState
     bool restartGame{};
 public:
     DeadState(std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> p_world, RenderWindow& p_window);
-    std::unique_ptr<GameState> update() override;
+    std::unique_ptr<GameState> fixedUpdate() override;
     void handleInput(SDL_Event input) override;
     //std::unique_ptr<std::vector<std::unique_ptr<GameObject>>> world;
     RenderWindow& window;

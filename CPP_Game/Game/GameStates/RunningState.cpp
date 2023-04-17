@@ -33,7 +33,7 @@ void RunningState::handleInput(SDL_Event input)
 }
 
 // Update
-std::unique_ptr<GameState> RunningState::update()
+std::unique_ptr<GameState> RunningState::fixedUpdate()
 {
     std::cout << "running\n";
     if(true == dead)
