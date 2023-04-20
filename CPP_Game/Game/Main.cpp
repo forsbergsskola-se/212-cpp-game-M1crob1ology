@@ -51,6 +51,7 @@ int main(int argc, char* args[])
     bool quit = false;
     const float fixedTimeStep{0.01f};
     float timeNotSimulatedYet{0.0f};
+    srand(time(NULL));
     float currentTime{utils::hireTimeInSeconds()};
 
         std::unique_ptr<GameState> currentState = std::make_unique<MenuState>(window);

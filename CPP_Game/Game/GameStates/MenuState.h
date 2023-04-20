@@ -11,6 +11,7 @@ extern class GameObject;
 class MenuState : public GameState
 {
     bool startGame{};
+    int randomOffset{};
 public:
     MenuState(RenderWindow& p_window);
     std::unique_ptr<GameState> fixedUpdate() override;

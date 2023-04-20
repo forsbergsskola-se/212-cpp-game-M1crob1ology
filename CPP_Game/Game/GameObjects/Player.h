@@ -12,5 +12,5 @@ public:
 	Player(Vector2f p_pos, Vector2f p_scale, std::shared_ptr<Image> p_tex);
 	void handleInput(SDL_Event& event) override;
 	void update() override;
-	
+	bool dead {};
 };

@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aabcbce0-a83c-4e6d-92e5-58677b253c61" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Game/GameObjects/ObstacleObj.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Game/GameObjects/ObstacleObj.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CPP_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CPP_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameObjects/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameObjects/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.vcxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameObjects/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameObjects/Player.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameStates/DeadState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/DeadState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameStates/DeadState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/DeadState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameStates/MenuState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/MenuState.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameStates/MenuState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/MenuState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/GameStates/RunningState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/RunningState.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/GameStates/RunningState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameStates/RunningState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Utils/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Utils/GameState.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +27,6 @@
     <setting file="file://$PROJECT_DIR$/Game/Utils/Math.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Game/Utils/RenderWindow.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ext/SDL2-2.26.4/include/SDL_render.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.35.32215/include/memory" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.35.32215/include/xmemory" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -123,6 +119,9 @@
       <workItem from="1681660382236" duration="7320000" />
       <workItem from="1681716001462" duration="2389000" />
       <workItem from="1681740851028" duration="4968000" />
+      <workItem from="1681860510653" duration="1054000" />
+      <workItem from="1681912901528" duration="121000" />
+      <workItem from="1682016527774" duration="6275000" />
     </task>
     <servers />
   </component>
