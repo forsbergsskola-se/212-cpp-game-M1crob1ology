@@ -29,3 +29,7 @@ I hope you enjoy playing Zombie Dinosaur Game! By using several design patterns 
 
 ![image](https://user-images.githubusercontent.com/56590155/234279964-9aee17c7-1c57-4942-bfb4-5b54b4e46e3b.png)
 
+
+https://user-images.githubusercontent.com/56590155/235317185-0de1e5d3-98d8-401c-a0f9-4d587a515a0a.mp4
+
+
